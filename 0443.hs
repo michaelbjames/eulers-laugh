@@ -50,4 +50,4 @@ fastest_g :: Int -> Int
 fastest_g = index g_tree
 
 main = do
-  print $ fastest_g 1000
+  print $ fastest_g 1000000

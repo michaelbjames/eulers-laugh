@@ -16,6 +16,11 @@ g mg 4 = 13
 g mg n = let prev = mg(n-1)
           in prev + gcd n prev
 
+--g(4) + gcd(5,g(4)) + gcd(6, g(4) + gcd(5,g(4))) + gcd(7, g(4) + gcd(5,g(4)) + gcd(6, g(4) + gcd(5,g(4))))
+--13 + a5 + b13 + c6 + d13 + da5 + db13 + (e7 + e13 + ea5 + eb13 + ec6 + ed13 + eda5 + edb13)
+--13(1 + b + db + e + eb + ed + edb) + 5(a + da + ea + eda) + 6(c + ec) + 7e
+--13(1 + b(1 + d) + e(1 + b)(1 + d)) + 5(a(1+e)(1+d)) + 6(c(1+e)) + 7e
+
 data Tree a = Tree (Tree a) a (Tree a)
 instance Functor Tree where
   fmap f (Tree l m r) = Tree (fmap f l) (f m) (fmap f r)

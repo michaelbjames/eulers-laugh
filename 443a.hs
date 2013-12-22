@@ -38,7 +38,7 @@ g _ 4 = 13
 g prev n = let (a,b) = extended_gcd prev n
             in (1 + a) * prev + b * n
 
-h n = foldl' (\b a -> g b a) (13) [1..n]
+h n = foldr (\b a -> g b a) (13) [1..n]
 
 main = do
   print $ h (toInteger $ 10 ^ 15)

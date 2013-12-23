@@ -13,3 +13,13 @@ def is_palendrom(n):
     if strnum[x] != strnum[length - 1 - x]:
       return False
   return True;
+
+max = 0
+max_num = 999
+for x in xrange(1,max_num):
+  for y in xrange(1,max_num):
+    candidate = x * y
+    if is_palendrom(candidate) and candidate > max:
+      max = candidate
+
+print max

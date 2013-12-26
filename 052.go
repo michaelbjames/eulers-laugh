@@ -10,22 +10,20 @@ import "strconv"
 import "fmt"
 
 func main() {
-  
+  fmt.Println(permutation(125874,"251748"))
 }
 
 func permutation(x int, test string) (isPerm bool) {
   sigma := strconv.Itoa(x)
-  var digits [10]int
+  digits := make(map[uint8]int)
   for i := 0; i < len(test); i++ {
-    tmp := test[i]
-    fmt.Println(tmp)
-    digits[tmp]++
+    digits[test[i]]++
   }
   for i := 0; i < len(sigma); i++ {
-    digits[strconv.Atoi(sigma[i])]--
+    digits[sigma[i]]--
   }
-  for i := 0; i < len(digits); i++ {
-    if digits[i] != 0 {
+  for k,_ := range digits {
+    if digits[k] != 0 {
       return false
     }
   }

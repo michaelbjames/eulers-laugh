@@ -7,14 +7,27 @@
 package main
 
 import "strconv"
+import "fmt"
 
 func main() {
   
 }
 
 func permutation(x int, test string) (isPerm bool) {
-  sigma := Itoa(x)
-  for {
-    
+  sigma := strconv.Itoa(x)
+  var digits [10]int
+  for i := 0; i < len(test); i++ {
+    tmp := test[i]
+    fmt.Println(tmp)
+    digits[tmp]++
   }
+  for i := 0; i < len(sigma); i++ {
+    digits[strconv.Atoi(sigma[i])]--
+  }
+  for i := 0; i < len(digits); i++ {
+    if digits[i] != 0 {
+      return false
+    }
+  }
+  return true
 }

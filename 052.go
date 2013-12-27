@@ -10,17 +10,27 @@ import "strconv"
 import "fmt"
 
 func main() {
-  fmt.Println(permutation(125874,"251748"))
+  for i := 1; true; i++ {
+    if permutation(i,2*i) &&
+       permutation(i,3*i) &&
+       permutation(i,4*i) &&
+       permutation(i,5*i) &&
+       permutation(i,6*i) {
+        fmt.Println(i)
+        break
+    }
+  }
 }
 
-func permutation(x int, test string) (isPerm bool) {
-  sigma := strconv.Itoa(x)
+func permutation(x int, test int) (isPerm bool) {
+  sigma1 := strconv.Itoa(test)
+  sigma2 := strconv.Itoa(x)
   digits := make(map[uint8]int)
-  for i := 0; i < len(test); i++ {
-    digits[test[i]]++
+  for i := 0; i < len(sigma1); i++ {
+    digits[sigma1[i]]++
   }
-  for i := 0; i < len(sigma); i++ {
-    digits[sigma[i]]--
+  for i := 0; i < len(sigma2); i++ {
+    digits[sigma2[i]]--
   }
   for k,_ := range digits {
     if digits[k] != 0 {
